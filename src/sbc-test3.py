@@ -9,7 +9,6 @@ import array as arr
 class Steel_Battalions_Controller:
 
     def __init__(self):
-        # 0a7b:d000
 				self.model = self.get_model()
         self.model["dev"] = usb.core.find(idVendor=self.model["_VENDORID"], idProduct=self.model["_PRODUCTID"])
         self.model["configuration"] = self.model["dev"].get_active_configuration()
@@ -270,7 +269,7 @@ class Steel_Battalions_Controller:
         else: 
             _ = system('clear')
 
-		def get_model(self)
+		def get_model(self):
         return modeldict = {
         "model" : {
         		"_VENDORID" : 0x0a7b
@@ -279,6 +278,7 @@ class Steel_Battalions_Controller:
         		,"_SETTING_SBC" : 0
         		,"_ENDPOINT_READER" : 0
         		,"_ENDPOINT_WRITER" : 1
+        		,"" : def 
             ,"header" : None
             ,"buttons" : {
                 # cmd column
