@@ -9,140 +9,21 @@ import array as arr
 class Steel_Battalions_Controller:
 
     def __init__(self):
-        # 0a7b:d000
-        self.modeldict = {
-#                "index" : 0
-#                ,"rates" : [1,1,1,1,1,1,1,1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
-#                ,"buffers" : [0,0,0,0,0,0,0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                "model" : {
-                    "header" : None
-                    ,"buttons" : {
-                        # cmd column
-                        "Eject" : None
-                        ,"Hatch" : None
-                        ,"Ignition" : None
-                        ,"Start" : None
-                        # toggles switches
-                        ,"Oxygen" : None
-                        ,"Filt" : None
-                        ,"Fuel" : None
-                        ,"Buffer" : None
-                        ,"Location" : None
-                        # 1x5  buttons - communications (red)
-                        ,"Ch1x1" : None
-                        ,"Ch1x2" : None
-                        ,"Ch1x3" : None
-                        ,"Ch1x4" : None
-                        ,"Ch1x5" : None
-                        # 3x3 Buttons - functions (green 3x3)
-                        ,"Fx1x1" : None
-                        ,"Fx1x2" : None
-                        ,"Fx1x3" : None
-                        ,"Fx2x1" : None
-                        ,"Fx2x2" : None
-                        ,"Fx2x3" : None
-                        ,"Fx3x1" : None
-                        ,"Fx3x2" : None
-                        ,"Fx3x3" : None
-                        # 2x3 - Weapon Controls (green 2x3)
-                        ,"Wc1x1" : None
-                        ,"Wc1x2" : None
-                        ,"Wc1x3" : None
-                        ,"Wc2x1" : None
-                        ,"Wc2x2" : None
-                        ,"Wc2x3" : None
-                        # 3x2 - Monitor Controls (green 3x2)
-                        ,"Mc1x1" : None
-                        ,"Mc1x2" : None
-                        ,"Mc2x1" : None
-                        ,"Mc2x2" : None
-                        ,"Mc3x1" : None
-                        ,"Mc3x2" : None
-                        ,"finger_trigger" : None
-                        ,"thumb_trigger" : None
-                        ,"lock_on" : None
-                        ,"SBC_Active" : 1
-                        }#/buttons
-                    ,"separator" : None
-                    ,"sight" :  {}
-                    ,"rotation" : None
-                    ,"aiming" : {}
-                    ,"tuner_dial" : None
-                    ,"gear" : None
-                    ,"sidestep" : {"drift_offset" : -1}
-                    ,"brake" : {"drift_offset" : -1}
-                    ,"throttle" : {"drift_offset" : -1}
-                    }#/model
-                ,"leds" : {
-                        4 : { "name" : "EmergencyEject", "id" : 4, "intensity" : 0, "byte_pos" : (round(int(4 - (4 % 2)) / 2))},
-                        5 : { "name" : "CockpitHatch", "id" : 5, "intensity" : 0, "byte_pos" : (round(int(5 - (5 % 2)) / 2))},
-                        6 : { "name" : "Ignition", "id" : 6, "intensity" : 0, "byte_pos" : (round(int(6 - (6 % 2)) / 2))},
-                        7 : { "name" : "Start", "id" : 7, "intensity" : 0, "byte_pos" : (round(int(7 - (7 % 2)) / 2))},
-                        8 : { "name" : "OpenClose", "id" : 8, "intensity" : 0, "byte_pos" : (round(int(8 - (8 % 2)) / 2))},
-                        9 : { "name" : "MapZoomInOut", "id" : 9, "intensity" : 0, "byte_pos" : (round(int(9 - (9 % 2)) / 2))},
-                        10 : { "name" : "ModeSelect", "id" : 10, "intensity" : 0, "byte_pos" : (round(int(10 - (10 % 2)) / 2))},
-                        11 : { "name" : "SubMonitorModeSelect", "id" : 11, "intensity" : 0, "byte_pos" : (round(int(11 - (11 % 2)) / 2))},
-                        12 : { "name" : "MainMonitorZoomIn", "id" : 12, "intensity" : 0, "byte_pos" : (round(int(12 - (12 % 2)) / 2))},
-                        13 : { "name" : "MainMonitorZoomOut", "id" : 13, "intensity" : 0, "byte_pos" : (round(int(13 - (13 % 2)) / 2))},
-                        41 : { "name" : "Gear5", "id" : 41, "intensity" : 0, "byte_pos" : (round(int(41 - (41 % 2)) / 2))},
-                        40 : { "name" : "Gear4", "id" : 40, "intensity" : 0, "byte_pos" : (round(int(40 - (40 % 2)) / 2))},
-                        39 : { "name" : "Gear3", "id" : 39, "intensity" : 0, "byte_pos" : (round(int(39 - (39 % 2)) / 2))},
-                        38 : { "name" : "Gear2", "id" : 38, "intensity" : 0, "byte_pos" : (round(int(38 - (38 % 2)) / 2))},
-                        37 : { "name" : "Gear1", "id" : 37, "intensity" : 0, "byte_pos" : (round(int(37 - (37 % 2)) / 2))},
-                        36 : { "name" : "GearN", "id" : 36, "intensity" : 0, "byte_pos" : (round(int(36 - (36 % 2)) / 2))},
-                        35 : { "name" : "GearR", "id" : 35, "intensity" : 0, "byte_pos" : (round(int(35 - (35 % 2)) / 2))},
-                        33 : { "name" : "Comm5", "id" : 33, "intensity" : 0, "byte_pos" : (round(int(33 - (33 % 2)) / 2))},
-                        32 : { "name" : "Comm4", "id" : 32, "intensity" : 0, "byte_pos" : (round(int(32 - (32 % 2)) / 2))},
-                        31 : { "name" : "Comm3", "id" : 31, "intensity" : 0, "byte_pos" : (round(int(31 - (31 % 2)) / 2))},
-                        30 : { "name" : "Comm2", "id" : 30, "intensity" : 0, "byte_pos" : (round(int(30 - (30 % 2)) / 2))},
-                        29 : { "name" : "Comm1", "id" : 29, "intensity" : 0, "byte_pos" : (round(int(29 - (29 % 2)) / 2))},
-                        28 : { "name" : "MagazineChange", "id" : 28, "intensity" : 0, "byte_pos" : (round(int(28 - (28 % 2)) / 2))},
-                        27 : { "name" : "SubWeaponControl", "id" : 27, "intensity" : 0, "byte_pos" : (round(int(27 - (27 % 2)) / 2))},
-                        26 : { "name" : "MainWeaponControl", "id" : 26, "intensity" : 0, "byte_pos" : (round(int(26 - (26 % 2)) / 2))},
-                        25 : { "name" : "F3", "id" : 25, "intensity" : 0, "byte_pos" : (round(int(25 - (25 % 2)) / 2))},
-                        24 : { "name" : "F2", "id" : 24, "intensity" : 0, "byte_pos" : (round(int(24 - (24 % 2)) / 2))},
-                        23 : { "name" : "F1", "id" : 23, "intensity" : 0, "byte_pos" : (round(int(23 - (23 % 2)) / 2))},
-                        22 : { "name" : "NightScope", "id" : 22, "intensity" : 0, "byte_pos" : (round(int(22 - (22 % 2)) / 2))},
-                        21 : { "name" : "Override", "id" : 21, "intensity" : 0, "byte_pos" : (round(int(21 - (21 % 2)) / 2))},
-                        20 : { "name" : "TankDetach", "id" : 20, "intensity" : 0, "byte_pos" : (round(int(20 - (20 % 2)) / 2))},
-                        19 : { "name" : "Chaff", "id" : 19, "intensity" : 0, "byte_pos" : (round(int(19 - (19 % 2)) / 2))},
-                        18 : { "name" : "Extinguisher", "id" : 18, "intensity" : 0, "byte_pos" : (round(int(18 - (18 % 2)) / 2))},
-                        17 : { "name" : "Washing", "id" : 17, "intensity" : 0, "byte_pos" : (round(int(17 - (17 % 2)) / 2))},
-                        16 : { "name" : "LineColorChange", "id" : 16, "intensity" : 0, "byte_pos" : (round(int(16 - (16 % 2)) / 2))},
-                        15 : { "name" : "Manipulator", "id" : 15, "intensity" : 0, "byte_pos" : (round(int(15 - (15 % 2)) / 2))},
-                        14 : { "name" : "ForecastShootingSystem", "id" : 14, "intensity" : 0, "byte_pos" : (round(int(14 - (14 % 2)) / 2))}
-                    }#/led
-                }#/modeldict
-
-        self.vid = 0x0a7b
-        self.pid = 0xd000
-        INTERFACE_SBC = 0
-        SETTING_SBC = 0
-        ENDPOINT_READER = 0
-        ENDPOINT_WRITER = 1
-        self.dev = usb.core.find(idVendor=self.vid, idProduct=self.pid)
-        self.configuration = self.dev.get_active_configuration()
-#        print(self.configuration)
-
-        self.interface = 0
-        #self.configuration[(INTERFACE_SBC, SETTING_SBC)]
-        #print(self.interface)
-
-        self.endpoint_reader = self.dev[0][(INTERFACE_SBC, SETTING_SBC)][ENDPOINT_READER]
-#        print(self.endpoint_reader)
-
-        self.endpoint_writer = self.dev[0][(INTERFACE_SBC, SETTING_SBC)][ENDPOINT_WRITER]
-#        print(self.endpoint_writer)
+        self.model = self.get_model()
+        self.model["dev"] = usb.core.find(idVendor=self.model["_VENDORID"], idProduct=self.model["_PRODUCTID"])
+        self.model["configuration"] = self.model["dev"].get_active_configuration()
+        self.model["endpoint_reader"] = self.model["dev"][0][(self.model["_INTERFACE_SBC"], self.model["_SETTING_SBC"])][self.model["_ENDPOINT_READER"]]
+        self.model["endpoint_writer"] = self.model["dev"][0][(self.model["_INTERFACE_SBC"], self.model["_SETTING_SBC"])][self.model["_ENDPOINT_WRITER"]]
 
         # if the OS kernel already claimed the device, which is most likely true
         # thanks to http://stackoverflow.com/questions/8218683/pyusb-cannot-set-configuration
-        if self.dev.is_kernel_driver_active(self.interface) is True:
+        if self.model["dev"].is_kernel_driver_active(self.model["interface"]) is True:
             # tell the kernel to detach
             print("Disengaging kernel mode driver for user mode driver")
-            self.dev.detach_kernel_driver(self.interface)
+            self.model["dev"].detach_kernel_driver(self.model["interface"])
             # claim the device
             print("Engaging user mode driver")
-            usb.util.claim_interface(self.dev, self.interface)
+            usb.util.claim_interface(self.model["dev"], self.model["interface"])
 
 #        print("Leds::", self.modeldict["leds"])
 #        return False
@@ -154,7 +35,7 @@ class Steel_Battalions_Controller:
         exit(0)
 
         self.clear()
-        if not self.dev:
+        if not self.model["dev"]:
             print("Could not find SBC :(")
             exit(1)
         print("SBC - Detected!")
@@ -262,9 +143,9 @@ class Steel_Battalions_Controller:
 
     def read_sbc(self, model, active_model, collected, attempts, prev_data):
         try:
-            data = self.dev.read(self.endpoint_reader.bEndpointAddress,self.endpoint_reader.wMaxPacketSize)
+            data = self.model["dev"].read(self.endpoint_reader.bEndpointAddress,self.endpoint_reader.wMaxPacketSize)
             #noted that the second read pull the last data, so there seems to be hosticall buffer, oor possibly a hardware smoothing (2 cycle read)
-            #shadow_data = self.dev.read(self.endpoint.bEndpointAddress,self.endpoint.wMaxPacketSize)
+            #shadow_data = self.model["dev"].read(self.endpoint.bEndpointAddress,self.endpoint.wMaxPacketSize)
             collected += 1
 
             if data != prev_data:
@@ -372,10 +253,10 @@ class Steel_Battalions_Controller:
     def release_sbc(self):
         # release the devices
         print("Releasing user mode driver")
-        usb.util.release_interface(self.dev, self.interface)
+        usb.util.release_interface(self.model["dev"], self.model["interface"])
         print("Re-engaging kernel mode driver")
         # reattach the device to the OS kernel
-        self.dev.attach_kernel_driver(self.interface)
+        self.model["dev"].attach_kernel_driver(self.model["interface"])
 
     # define our clear function 
     def clear(self): 
@@ -387,6 +268,116 @@ class Steel_Battalions_Controller:
     # for ma    c and linux(here, os.name is 'posix') 
         else: 
             _ = system('clear')
+
+    def get_model(self):
+        modeldict = {
+        "model" : {
+        	"_VENDORID" : 0x0a7b
+        	,"_PRODUCTID" : 0xd000
+        	,"_INTERFACE_SBC" : 0
+        	,"_SETTING_SBC" : 0
+        	,"_ENDPOINT_READER" : 0
+        	,"_ENDPOINT_WRITER" : 1
+        	#,"" : def 
+            ,"header" : None
+            ,"buttons" : {
+                # cmd column
+                "Eject" : None
+                ,"Hatch" : None
+                ,"Ignition" : None
+                ,"Start" : None
+                # toggles switches
+                ,"Oxygen" : None
+                ,"Filt" : None
+                ,"Fuel" : None
+                ,"Buffer" : None
+                ,"Location" : None
+                # 1x5  buttons - communications (red)
+                ,"Ch1x1" : None
+                ,"Ch1x2" : None
+                ,"Ch1x3" : None
+                ,"Ch1x4" : None
+                ,"Ch1x5" : None
+                # 3x3 Buttons - functions (green 3x3)
+                ,"Fx1x1" : None
+                ,"Fx1x2" : None
+                ,"Fx1x3" : None
+                ,"Fx2x1" : None
+                ,"Fx2x2" : None
+                ,"Fx2x3" : None
+                ,"Fx3x1" : None
+                ,"Fx3x2" : None
+                ,"Fx3x3" : None
+                # 2x3 - Weapon Controls (green 2x3)
+                ,"Wc1x1" : None
+                ,"Wc1x2" : None
+                ,"Wc1x3" : None
+                ,"Wc2x1" : None
+                ,"Wc2x2" : None
+                ,"Wc2x3" : None
+                # 3x2 - Monitor Controls (green 3x2)
+                ,"Mc1x1" : None
+                ,"Mc1x2" : None
+                ,"Mc2x1" : None
+                ,"Mc2x2" : None
+                ,"Mc3x1" : None
+                ,"Mc3x2" : None
+                ,"finger_trigger" : None
+                ,"thumb_trigger" : None
+                ,"lock_on" : None
+                ,"SBC_Active" : 1
+                }#/buttons
+            ,"separator" : None
+            ,"sight" :  {}
+            ,"rotation" : None
+            ,"aiming" : {}
+            ,"tuner_dial" : None
+            ,"gear" : None
+            ,"sidestep" : {"drift_offset" : -1}
+            ,"brake" : {"drift_offset" : -1}
+            ,"throttle" : {"drift_offset" : -1}
+            }#/model
+        ,"leds" : {
+                4 : { "name" : "EmergencyEject", "id" : 4, "intensity" : 0, "byte_pos" : (round(int(4 - (4 % 2)) / 2))},
+                5 : { "name" : "CockpitHatch", "id" : 5, "intensity" : 0, "byte_pos" : (round(int(5 - (5 % 2)) / 2))},
+                6 : { "name" : "Ignition", "id" : 6, "intensity" : 0, "byte_pos" : (round(int(6 - (6 % 2)) / 2))},
+                7 : { "name" : "Start", "id" : 7, "intensity" : 0, "byte_pos" : (round(int(7 - (7 % 2)) / 2))},
+                8 : { "name" : "OpenClose", "id" : 8, "intensity" : 0, "byte_pos" : (round(int(8 - (8 % 2)) / 2))},
+                9 : { "name" : "MapZoomInOut", "id" : 9, "intensity" : 0, "byte_pos" : (round(int(9 - (9 % 2)) / 2))},
+                10 : { "name" : "ModeSelect", "id" : 10, "intensity" : 0, "byte_pos" : (round(int(10 - (10 % 2)) / 2))},
+                11 : { "name" : "SubMonitorModeSelect", "id" : 11, "intensity" : 0, "byte_pos" : (round(int(11 - (11 % 2)) / 2))},
+                12 : { "name" : "MainMonitorZoomIn", "id" : 12, "intensity" : 0, "byte_pos" : (round(int(12 - (12 % 2)) / 2))},
+                13 : { "name" : "MainMonitorZoomOut", "id" : 13, "intensity" : 0, "byte_pos" : (round(int(13 - (13 % 2)) / 2))},
+                41 : { "name" : "Gear5", "id" : 41, "intensity" : 0, "byte_pos" : (round(int(41 - (41 % 2)) / 2))},
+                40 : { "name" : "Gear4", "id" : 40, "intensity" : 0, "byte_pos" : (round(int(40 - (40 % 2)) / 2))},
+                39 : { "name" : "Gear3", "id" : 39, "intensity" : 0, "byte_pos" : (round(int(39 - (39 % 2)) / 2))},
+                38 : { "name" : "Gear2", "id" : 38, "intensity" : 0, "byte_pos" : (round(int(38 - (38 % 2)) / 2))},
+                37 : { "name" : "Gear1", "id" : 37, "intensity" : 0, "byte_pos" : (round(int(37 - (37 % 2)) / 2))},
+                36 : { "name" : "GearN", "id" : 36, "intensity" : 0, "byte_pos" : (round(int(36 - (36 % 2)) / 2))},
+                35 : { "name" : "GearR", "id" : 35, "intensity" : 0, "byte_pos" : (round(int(35 - (35 % 2)) / 2))},
+                33 : { "name" : "Comm5", "id" : 33, "intensity" : 0, "byte_pos" : (round(int(33 - (33 % 2)) / 2))},
+                32 : { "name" : "Comm4", "id" : 32, "intensity" : 0, "byte_pos" : (round(int(32 - (32 % 2)) / 2))},
+                31 : { "name" : "Comm3", "id" : 31, "intensity" : 0, "byte_pos" : (round(int(31 - (31 % 2)) / 2))},
+                30 : { "name" : "Comm2", "id" : 30, "intensity" : 0, "byte_pos" : (round(int(30 - (30 % 2)) / 2))},
+                29 : { "name" : "Comm1", "id" : 29, "intensity" : 0, "byte_pos" : (round(int(29 - (29 % 2)) / 2))},
+                28 : { "name" : "MagazineChange", "id" : 28, "intensity" : 0, "byte_pos" : (round(int(28 - (28 % 2)) / 2))},
+                27 : { "name" : "SubWeaponControl", "id" : 27, "intensity" : 0, "byte_pos" : (round(int(27 - (27 % 2)) / 2))},
+                26 : { "name" : "MainWeaponControl", "id" : 26, "intensity" : 0, "byte_pos" : (round(int(26 - (26 % 2)) / 2))},
+                25 : { "name" : "F3", "id" : 25, "intensity" : 0, "byte_pos" : (round(int(25 - (25 % 2)) / 2))},
+                24 : { "name" : "F2", "id" : 24, "intensity" : 0, "byte_pos" : (round(int(24 - (24 % 2)) / 2))},
+                23 : { "name" : "F1", "id" : 23, "intensity" : 0, "byte_pos" : (round(int(23 - (23 % 2)) / 2))},
+                22 : { "name" : "NightScope", "id" : 22, "intensity" : 0, "byte_pos" : (round(int(22 - (22 % 2)) / 2))},
+                21 : { "name" : "Override", "id" : 21, "intensity" : 0, "byte_pos" : (round(int(21 - (21 % 2)) / 2))},
+                20 : { "name" : "TankDetach", "id" : 20, "intensity" : 0, "byte_pos" : (round(int(20 - (20 % 2)) / 2))},
+                19 : { "name" : "Chaff", "id" : 19, "intensity" : 0, "byte_pos" : (round(int(19 - (19 % 2)) / 2))},
+                18 : { "name" : "Extinguisher", "id" : 18, "intensity" : 0, "byte_pos" : (round(int(18 - (18 % 2)) / 2))},
+                17 : { "name" : "Washing", "id" : 17, "intensity" : 0, "byte_pos" : (round(int(17 - (17 % 2)) / 2))},
+                16 : { "name" : "LineColorChange", "id" : 16, "intensity" : 0, "byte_pos" : (round(int(16 - (16 % 2)) / 2))},
+                15 : { "name" : "Manipulator", "id" : 15, "intensity" : 0, "byte_pos" : (round(int(15 - (15 % 2)) / 2))},
+                14 : { "name" : "ForecastShootingSystem", "id" : 14, "intensity" : 0, "byte_pos" : (round(int(14 - (14 % 2)) / 2))}
+            }#/led
+        }#/modeldict
+        return modeldict
 
 #-------------------------------------------------------------------------------
 
