@@ -9,9 +9,9 @@ import array as arr
 class Steel_Battalions_Controller:
 
     def __init__(self):
-        self.model = self.get_model()
-        self.model["dev"] = usb.core.find(idVendor=self.model["_VENDORID"], idProduct=self.model["_PRODUCTID"])
-        self.model["configuration"] = self.model["dev"].get_active_configuration()
+        self.sbc = self.get_model()
+        self.sbc["model"]["dev"] = usb.core.find(idVendor=self.model["_VENDORID"], idProduct=self.model["_PRODUCTID"])
+        self.sbc["model"]["configuration"] = self.model["dev"].get_active_configuration()
         self.model["endpoint_reader"] = self.model["dev"][0][(self.model["_INTERFACE_SBC"], self.model["_SETTING_SBC"])][self.model["_ENDPOINT_READER"]]
         self.model["endpoint_writer"] = self.model["dev"][0][(self.model["_INTERFACE_SBC"], self.model["_SETTING_SBC"])][self.model["_ENDPOINT_WRITER"]]
 
@@ -183,7 +183,7 @@ class Steel_Battalions_Controller:
                 ,"Ch1x4" : self.translate(format(data[model.index("Buttons3")],'08b')[0])
                 ,"Ch1x5" : self.translate(format(data[model.index("Buttons4")],'08b')[7])
                 # X3xY3 Buttons - functions (green 3x3)
-                ,"Fx1x1" : self.translate(format(data[model.index("Buttons2")],'08b')[1])
+                ,"Fx1x1" : self.translate(format(data[model.index("Buttons3")],'08b')[1])
                 ,"Fx1x2" : self.translate(format(data[model.index("Buttons2")],'08b')[4])
                 ,"Fx1x3" : self.translate(format(data[model.index("Buttons1")],'08b')[2])
                 ,"Fx2x1" : self.translate(format(data[model.index("Buttons2")],'08b')[0])
@@ -270,7 +270,7 @@ class Steel_Battalions_Controller:
             _ = system('clear')
 
     def get_model(self):
-        modeldict = {
+        self.modeldict = {
         "model" : {
         	"_VENDORID" : 0x0a7b
         	,"_PRODUCTID" : 0xd000
@@ -278,53 +278,59 @@ class Steel_Battalions_Controller:
         	,"_SETTING_SBC" : 0
         	,"_ENDPOINT_READER" : 0
         	,"_ENDPOINT_WRITER" : 1
+                ,"normalIntensity" : 1
+                ,"boldIntensity" : 7
+                ,"emergencyIntensity" : 15
+                ,"refreshRate" : 60
+                ,"" : 
+
         	#,"" : def 
             ,"header" : None
             ,"buttons" : {
                 # cmd column
                 "Eject" : None
-                ,"Hatch" : None
+                ,"CockpitHatch" : None
                 ,"Ignition" : None
                 ,"Start" : None
                 # toggles switches
-                ,"Oxygen" : None
-                ,"Filt" : None
-                ,"Fuel" : None
-                ,"Buffer" : None
-                ,"Location" : None
+                ,"ToggleOxygenSupply" : None
+                ,"ToggleFilter" : None
+                ,"ToggleFuelFlowRate" : None
+                ,"ToggleBufferMaterial" : None
+                ,"ToggleVTLocation" : None
                 # 1x5  buttons - communications (red)
-                ,"Ch1x1" : None
-                ,"Ch1x2" : None
-                ,"Ch1x3" : None
-                ,"Ch1x4" : None
-                ,"Ch1x5" : None
+                ,"Comm1" : None
+                ,"Comm2" : None
+                ,"Comm3" : None
+                ,"Comm4" : None
+                ,"Comm5" : None
                 # 3x3 Buttons - functions (green 3x3)
-                ,"Fx1x1" : None
-                ,"Fx1x2" : None
-                ,"Fx1x3" : None
-                ,"Fx2x1" : None
-                ,"Fx2x2" : None
-                ,"Fx2x3" : None
-                ,"Fx3x1" : None
-                ,"Fx3x2" : None
-                ,"Fx3x3" : None
+                ,"Fx1" : None
+                ,"Fx2" : None
+                ,"Fx3" : None
+                ,"FxTankDetach" : None
+                ,"FxOverride" : None
+                ,"FxNightScope" : None
+                ,"FxFSS" : None
+                ,"FxManipulator" : None
+                ,"FxLineColourChange" : None
                 # 2x3 - Weapon Controls (green 2x3)
-                ,"Wc1x1" : None
-                ,"Wc1x2" : None
-                ,"Wc1x3" : None
-                ,"Wc2x1" : None
-                ,"Wc2x2" : None
-                ,"Wc2x3" : None
-                # 3x2 - Monitor Controls (green 3x2)
-                ,"Mc1x1" : None
-                ,"Mc1x2" : None
-                ,"Mc2x1" : None
-                ,"Mc2x2" : None
-                ,"Mc3x1" : None
-                ,"Mc3x2" : None
-                ,"finger_trigger" : None
-                ,"thumb_trigger" : None
-                ,"lock_on" : None
+                ,"WcWashing" : None
+                ,"WcExstinguisher" : None
+                ,"WcChaff" : None
+                ,"WcMain" : None
+                ,"WcSub" : None
+                ,"WcMagazineChange" : None
+                # 3x2 - Multi Monitor Controls (green 3x2)
+                ,"MmcOpenClose" : None
+                ,"MmcMapZoomInOut" : None
+                ,"MmcModeSelect" : None
+                ,"MmcSubMonitor" : None
+                ,"MmcZoomIn" : None
+                ,"MmcZoomOut" : None
+                ,"RightJoyfinger_trigger" : None
+                ,"RightJoythumb_trigger" : None
+                ,"RightJoylock_on" : None
                 ,"SBC_Active" : 1
                 }#/buttons
             ,"separator" : None
@@ -333,18 +339,18 @@ class Steel_Battalions_Controller:
             ,"aiming" : {}
             ,"tuner_dial" : None
             ,"gear" : None
-            ,"sidestep" : {"drift_offset" : -1}
-            ,"brake" : {"drift_offset" : -1}
-            ,"throttle" : {"drift_offset" : -1}
+            ,"sidestep" : {}
+            ,"brake" : {}
+            ,"throttle" : {}
             }#/model
         ,"leds" : {
-                4 : { "name" : "EmergencyEject", "id" : 4, "intensity" : 0, "byte_pos" : (round(int(4 - (4 % 2)) / 2))},
-                5 : { "name" : "CockpitHatch", "id" : 5, "intensity" : 0, "byte_pos" : (round(int(5 - (5 % 2)) / 2))},
-                6 : { "name" : "Ignition", "id" : 6, "intensity" : 0, "byte_pos" : (round(int(6 - (6 % 2)) / 2))},
-                7 : { "name" : "Start", "id" : 7, "intensity" : 0, "byte_pos" : (round(int(7 - (7 % 2)) / 2))},
-                8 : { "name" : "OpenClose", "id" : 8, "intensity" : 0, "byte_pos" : (round(int(8 - (8 % 2)) / 2))},
-                9 : { "name" : "MapZoomInOut", "id" : 9, "intensity" : 0, "byte_pos" : (round(int(9 - (9 % 2)) / 2))},
-                10 : { "name" : "ModeSelect", "id" : 10, "intensity" : 0, "byte_pos" : (round(int(10 - (10 % 2)) / 2))},
+                4 : { "name" : "EmergencyEject", "id" : 3, "intensity" : 0, "byte_pos" : (round(int(4 - (4 % 2)) / 2))},
+                5 : { "name" : "CockpitHatch", "id" : 4, "intensity" : 0, "byte_pos" : (round(int(5 - (5 % 2)) / 2))},
+                6 : { "name" : "Ignition", "id" : 5, "intensity" : 0, "byte_pos" : (round(int(6 - (6 % 2)) / 2))},
+                7 : { "name" : "Start", "id" : 6, "intensity" : 0, "byte_pos" : (round(int(7 - (7 % 2)) / 2))},
+                8 : { "name" : "OpenClose", "id" : 7, "intensity" : 0, "byte_pos" : (round(int(8 - (8 % 2)) / 2))},
+                9 : { "name" : "MapZoomInOut", "id" : 8, "intensity" : 0, "byte_pos" : (round(int(9 - (9 % 2)) / 2))},
+                10 : { "name" : "ModeSelect", "id" : 9, "intensity" : 0, "byte_pos" : (round(int(10 - (10 % 2)) / 2))},
                 11 : { "name" : "SubMonitorModeSelect", "id" : 11, "intensity" : 0, "byte_pos" : (round(int(11 - (11 % 2)) / 2))},
                 12 : { "name" : "MainMonitorZoomIn", "id" : 12, "intensity" : 0, "byte_pos" : (round(int(12 - (12 % 2)) / 2))},
                 13 : { "name" : "MainMonitorZoomOut", "id" : 13, "intensity" : 0, "byte_pos" : (round(int(13 - (13 % 2)) / 2))},
@@ -377,7 +383,7 @@ class Steel_Battalions_Controller:
                 14 : { "name" : "ForecastShootingSystem", "id" : 14, "intensity" : 0, "byte_pos" : (round(int(14 - (14 % 2)) / 2))}
             }#/led
         }#/modeldict
-        return modeldict
+        return self.modeldict
 
 #-------------------------------------------------------------------------------
 

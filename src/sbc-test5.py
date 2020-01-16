@@ -10,6 +10,9 @@ class Steel_Battalions_Controller:
 
     def __init__(self):
         # 0a7b:d000
+        self.vid = 0x0a7b
+        self.pid = 0xd000
+        self.dev = usb.core.find(idVendor=self.vid, idProduct=self.pid)
         self.modeldict = {
 #                "index" : 0
 #                ,"rates" : [1,1,1,1,1,1,1,1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
@@ -69,70 +72,57 @@ class Steel_Battalions_Controller:
                     ,"aiming" : {}
                     ,"tuner_dial" : None
                     ,"gear" : None
-                    ,"sidestep" : {"drift_offset" : -1}
-                    ,"brake" : {"drift_offset" : -1}
-                    ,"throttle" : {"drift_offset" : -1}
+                    ,"sidestep" : {}
+                    ,"brake" : {}
+                    ,"throttle" : {}
                     }#/model
                 ,"leds" : {
-                        4 : { "name" : "EmergencyEject", "id" : 4, "intensity" : 0, "byte_pos" : (round(int(4 - (4 % 2)) / 2))},
-                        5 : { "name" : "CockpitHatch", "id" : 5, "intensity" : 0, "byte_pos" : (round(int(5 - (5 % 2)) / 2))},
-                        6 : { "name" : "Ignition", "id" : 6, "intensity" : 0, "byte_pos" : (round(int(6 - (6 % 2)) / 2))},
-                        7 : { "name" : "Start", "id" : 7, "intensity" : 0, "byte_pos" : (round(int(7 - (7 % 2)) / 2))},
-                        8 : { "name" : "OpenClose", "id" : 8, "intensity" : 0, "byte_pos" : (round(int(8 - (8 % 2)) / 2))},
-                        9 : { "name" : "MapZoomInOut", "id" : 9, "intensity" : 0, "byte_pos" : (round(int(9 - (9 % 2)) / 2))},
-                        10 : { "name" : "ModeSelect", "id" : 10, "intensity" : 0, "byte_pos" : (round(int(10 - (10 % 2)) / 2))},
-                        11 : { "name" : "SubMonitorModeSelect", "id" : 11, "intensity" : 0, "byte_pos" : (round(int(11 - (11 % 2)) / 2))},
-                        12 : { "name" : "MainMonitorZoomIn", "id" : 12, "intensity" : 0, "byte_pos" : (round(int(12 - (12 % 2)) / 2))},
-                        13 : { "name" : "MainMonitorZoomOut", "id" : 13, "intensity" : 0, "byte_pos" : (round(int(13 - (13 % 2)) / 2))},
-                        41 : { "name" : "Gear5", "id" : 41, "intensity" : 0, "byte_pos" : (round(int(41 - (41 % 2)) / 2))},
-                        40 : { "name" : "Gear4", "id" : 40, "intensity" : 0, "byte_pos" : (round(int(40 - (40 % 2)) / 2))},
-                        39 : { "name" : "Gear3", "id" : 39, "intensity" : 0, "byte_pos" : (round(int(39 - (39 % 2)) / 2))},
-                        38 : { "name" : "Gear2", "id" : 38, "intensity" : 0, "byte_pos" : (round(int(38 - (38 % 2)) / 2))},
-                        37 : { "name" : "Gear1", "id" : 37, "intensity" : 0, "byte_pos" : (round(int(37 - (37 % 2)) / 2))},
-                        36 : { "name" : "GearN", "id" : 36, "intensity" : 0, "byte_pos" : (round(int(36 - (36 % 2)) / 2))},
-                        35 : { "name" : "GearR", "id" : 35, "intensity" : 0, "byte_pos" : (round(int(35 - (35 % 2)) / 2))},
-                        33 : { "name" : "Comm5", "id" : 33, "intensity" : 0, "byte_pos" : (round(int(33 - (33 % 2)) / 2))},
-                        32 : { "name" : "Comm4", "id" : 32, "intensity" : 0, "byte_pos" : (round(int(32 - (32 % 2)) / 2))},
-                        31 : { "name" : "Comm3", "id" : 31, "intensity" : 0, "byte_pos" : (round(int(31 - (31 % 2)) / 2))},
-                        30 : { "name" : "Comm2", "id" : 30, "intensity" : 0, "byte_pos" : (round(int(30 - (30 % 2)) / 2))},
-                        29 : { "name" : "Comm1", "id" : 29, "intensity" : 0, "byte_pos" : (round(int(29 - (29 % 2)) / 2))},
-                        28 : { "name" : "MagazineChange", "id" : 28, "intensity" : 0, "byte_pos" : (round(int(28 - (28 % 2)) / 2))},
-                        27 : { "name" : "SubWeaponControl", "id" : 27, "intensity" : 0, "byte_pos" : (round(int(27 - (27 % 2)) / 2))},
-                        26 : { "name" : "MainWeaponControl", "id" : 26, "intensity" : 0, "byte_pos" : (round(int(26 - (26 % 2)) / 2))},
-                        25 : { "name" : "F3", "id" : 25, "intensity" : 0, "byte_pos" : (round(int(25 - (25 % 2)) / 2))},
-                        24 : { "name" : "F2", "id" : 24, "intensity" : 0, "byte_pos" : (round(int(24 - (24 % 2)) / 2))},
-                        23 : { "name" : "F1", "id" : 23, "intensity" : 0, "byte_pos" : (round(int(23 - (23 % 2)) / 2))},
-                        22 : { "name" : "NightScope", "id" : 22, "intensity" : 0, "byte_pos" : (round(int(22 - (22 % 2)) / 2))},
-                        21 : { "name" : "Override", "id" : 21, "intensity" : 0, "byte_pos" : (round(int(21 - (21 % 2)) / 2))},
-                        20 : { "name" : "TankDetach", "id" : 20, "intensity" : 0, "byte_pos" : (round(int(20 - (20 % 2)) / 2))},
-                        19 : { "name" : "Chaff", "id" : 19, "intensity" : 0, "byte_pos" : (round(int(19 - (19 % 2)) / 2))},
-                        18 : { "name" : "Extinguisher", "id" : 18, "intensity" : 0, "byte_pos" : (round(int(18 - (18 % 2)) / 2))},
-                        17 : { "name" : "Washing", "id" : 17, "intensity" : 0, "byte_pos" : (round(int(17 - (17 % 2)) / 2))},
-                        16 : { "name" : "LineColorChange", "id" : 16, "intensity" : 0, "byte_pos" : (round(int(16 - (16 % 2)) / 2))},
-                        15 : { "name" : "Manipulator", "id" : 15, "intensity" : 0, "byte_pos" : (round(int(15 - (15 % 2)) / 2))},
-                        14 : { "name" : "ForecastShootingSystem", "id" : 14, "intensity" : 0, "byte_pos" : (round(int(14 - (14 % 2)) / 2))}
+                        "EmergencyEject" : {"id" : 4, "intensity" : 0},
+                        "CockpitHatch" : {"id" : 5, "intensity" : 15},
+                        "Ignition" : {"id" : 6, "intensity" : 15},
+                        "Start" : {"id" : 7, "intensity" : 15},
+                        "OpenClose" : {"id" : 8, "intensity" : 1},
+                        "MapZoomInOut" : {"id" : 9, "intensity" : 1},
+                        "ModeSelect" : {"id" : 10, "intensity" : 1},
+                        "SubMonitorModeSelect" : {"id" : 11, "intensity" : 1},
+                        "MainMonitorZoomIn" : {"id" : 12, "intensity" : 1},
+                        "MainMonitorZoomOut" : {"id" : 13, "intensity" : 1},
+	
+                        "Gear5" : {"id" : 41, "intensity" : 1},
+                        "Gear4" : {"id" : 40, "intensity" : 1},
+                        "Gear3" : {"id" : 39, "intensity" : 1},
+                        "Gear2" : {"id" : 38, "intensity" : 1},
+                        "Gear1" : {"id" : 37, "intensity" : 1},
+                        "GearN" : {"id" : 36, "intensity" : 1},
+                        "GearR" : {"id" : 35, "intensity" : 1},
+		
+                        "Comm5" : {"id" : 33, "intensity" : 1},
+                        "Comm4" : {"id" : 32, "intensity" : 1},
+                        "Comm3" : {"id" : 31, "intensity" : 1},
+                        "Comm2" : {"id" : 30, "intensity" : 1},
+                        "Comm1" : {"id" : 29, "intensity" : 1},
+                        "MagazineChange" : {"id" : 28, "intensity" : 1},
+
+                        "SubWeaponControl" : {"id" : 27, "intensity" : 1},
+                        "MainWeaponControl" : {"id" : 26, "intensity" : 1},
+                        "F3" : {"id" : 25, "intensity" : 1},
+                        "F2" : {"id" : 24, "intensity" : 1},
+                        "F1" : {"id" : 23, "intensity" : 1},
+                        "NightScope" : {"id" : 22, "intensity" : 1},
+                        "Override" : {"id" : 21, "intensity" : 1},
+                        "TankDetach" : {"id" : 20, "intensity" : 1},
+                        "Chaff" : {"id" : 19, "intensity" : 1},
+                        "Extinguisher" : {"id" : 18, "intensity" : 1},
+                        "Washing" : {"id" : 17, "intensity" : 1},
+                        "LineColorChange" : {"id" : 16, "intensity" : 1},
+                        "Manipulator" : {"id" : 15, "intensity" : 1},
+                        "ForecastShootingSystem" : {"id" : 14, "intensity" : 1}
                     }#/led
                 }#/modeldict
 
-        self.vid = 0x0a7b
-        self.pid = 0xd000
-        INTERFACE_SBC = 0
-        SETTING_SBC = 0
-        ENDPOINT_READER = 0
-        ENDPOINT_WRITER = 1
-        self.dev = usb.core.find(idVendor=self.vid, idProduct=self.pid)
-        self.configuration = self.dev.get_active_configuration()
-#        print(self.configuration)
-
+        # read endpoint
         self.interface = 0
-        #self.configuration[(INTERFACE_SBC, SETTING_SBC)]
-        #print(self.interface)
-
-        self.endpoint_reader = self.dev[0][(INTERFACE_SBC, SETTING_SBC)][ENDPOINT_READER]
-#        print(self.endpoint_reader)
-
-        self.endpoint_writer = self.dev[0][(INTERFACE_SBC, SETTING_SBC)][ENDPOINT_WRITER]
-#        print(self.endpoint_writer)
+        self.endpoint = self.dev[0][(0,0)][0]
 
         # if the OS kernel already claimed the device, which is most likely true
         # thanks to http://stackoverflow.com/questions/8218683/pyusb-cannot-set-configuration
@@ -144,15 +134,7 @@ class Steel_Battalions_Controller:
             print("Engaging user mode driver")
             usb.util.claim_interface(self.dev, self.interface)
 
-#        print("Leds::", self.modeldict["leds"])
-#        return False
-
-        self.led_test()
-
     def program(self):
-        self.release_sbc()
-        exit(0)
-
         self.clear()
         if not self.dev:
             print("Could not find SBC :(")
@@ -196,73 +178,9 @@ class Steel_Battalions_Controller:
                     continue
             sleep(0.1)
 
-    def cmd_sbc(self, cmd):
-        self.endpoint_writer(cmd)
-        
-    def refresh_led_state(self):
-        raw_led_data = arr.array("B",[])
-#        for i in range(34):
-#            raw_led_data.append(0x00)
-
-        for led_index in self.modeldict["leds"]:
-            #print("led_index", led_index)
-#            print("refresh_led_state ", self.modeldict["leds"][led_index])
-            #raw_led_data[self.modeldict["leds"][led_index]["byte_pos"]] = self.modeldict["leds"][led_index]["intensity"]
-            
-            #byte_pos = int(self.modeldict["leds"][led_index]["byte_pos"])
-            #print("***byte_pos:: ", byte_pos)
-            #raw_led_data[byte_pos] = self.modeldict["leds"][led_index]["intensity"]
-            raw_led_data.append(self.modeldict["leds"][led_index]["intensity"])
-            #print("rld: ", raw_led_data)
-        self.endpoint_writer.write(raw_led_data)
-        
-    def set_led_state(self, led_id, intensity, refresh_state):
-        led = self.modeldict["leds"][led_id]
-        
-        if led == None: return
-        
-        hex_pos = int(led_id % 2)
-        print("___hex_pos: ", hex_pos)
-        byte_pos = self.modeldict["leds"][led_id]["byte_pos" ]
-        print("___byte_pos: ", byte_pos)
-        intensity = 0x0f if intensity > 0x0f else intensity
-#        self.modeldict["leds"][led_id]["byte_pos" ] = byte_pos
-        self.modeldict["leds"][led_id]["intensity"] &= (0x0F if hex_pos == 1 else 0xF0)
-        self.modeldict["leds"][led_id]["intensity"] += (intensity * (0x10 if hex_pos == 1 else 0x01))
-        if refresh_state:
-            self.refresh_led_state()
-
-    def get_led_state(self, led_id):
-        led_index = self.modeldict["leds"].find(led_id)
-
-        if led == None: return
-        
-        hex_pos = int(led_id % 2)
-        byte_pos = int(led_id - hex_pos) / 2
-        intensity = 0x0f if intensity > 0x0f else intensity
-        return self.modeldict["leds"][led_index]["intensity"] & (0x0F if hex_pos == 1 else 0xF0) /  (0x01 if hex_pos == 1 else 0x10)
-
-    def led_test2(self, index):
-        led = self.modeldict["leds"].get(index)
-        led_id = led["id"]
-        for intensity in range(0x0f):
-            self.set_led_state(led_id, intensity, True)
-        led = self.modeldict["leds"].get(index)
-        led_id = led["id"]
-        for intensity in range(0x10, -1, -1):
-            self.set_led_state(led_id, intensity, True)
-        self.set_led_state(led_id, 0x00, True)
-
-    def led_test(self):
-        self.refresh_led_state()
-        for x in range(2):
-            for index in self.modeldict["leds"]:
-                self.led_test2(index)
-        self.refresh_led_state()
-
     def read_sbc(self, model, active_model, collected, attempts, prev_data):
         try:
-            data = self.dev.read(self.endpoint_reader.bEndpointAddress,self.endpoint_reader.wMaxPacketSize)
+            data = self.dev.read(self.endpoint.bEndpointAddress,self.endpoint.wMaxPacketSize)
             #noted that the second read pull the last data, so there seems to be hosticall buffer, oor possibly a hardware smoothing (2 cycle read)
             #shadow_data = self.dev.read(self.endpoint.bEndpointAddress,self.endpoint.wMaxPacketSize)
             collected += 1
@@ -275,14 +193,14 @@ class Steel_Battalions_Controller:
                         + format(data[model.index("Buttons3")],'08b')
                         + format(data[model.index("Buttons4")],'08b')
                         )
-                print ("0000000000000000000000000000000010000000")
-                print (buttons)
-                if buttons != "0000000000000000000000000000000010000000":
-                    print ("^^^0^^^^|^^^1^^^|^^^2^^^|^^^3^^^|^^^4^^^")
-                    print ("0123456701234567012345670123456701234567")
-                    print ("0000000000111111111122222222223333333333")
-                    print ("0123456789012345678901234567890123456789")
-                    exit(0)
+#                print ("0000000000000000000000000000000010000000")
+#                print (buttons)
+#                if buttons != "0000000000000000000000000000000010000000":
+#                    print ("^^^0^^^^|^^^1^^^|^^^2^^^|^^^3^^^|^^^4^^^")
+#                    print ("0123456701234567012345670123456701234567")
+#                    print ("0000000000111111111122222222223333333333")
+#                    print ("0123456789012345678901234567890123456789")
+#                    exit(0)
                 self.modeldict["model"]["buttons"] = {
                 # cmd column
                 "Eject" : self.translate(format(data[model.index("Buttons0")],'08b')[4])
@@ -333,21 +251,14 @@ class Steel_Battalions_Controller:
                 self.modeldict["model"]["separator"] = format(data[model.index("Const_01")],'08b')
                 self.modeldict["model"]["tuner_dial"] = format(data[model.index("Tuner_Dial")],'d')
                 self.modeldict["model"]["gear"] = re.sub("255","N", re.sub("254","R", format(data[model.index("Gear")],'d')))
-                self.modeldict["model"]["sight"]["x"] = format(data[model.index("Sight_X1")]+data[model.index("Sight_X2")],'d') + " : " + format(data[model.index("Sight_X2")],'d')
-                self.modeldict["model"]["sight"]["y"] = format(data[model.index("Sight_Y1")]+data[model.index("Sight_Y2")],'d') + " : " + format(data[model.index("Sight_Y2")],'d')
-                self.modeldict["model"]["rotation"] = format(data[model.index("Rotation1")],'d') + " : " + format(data[model.index("Rotation2")],'d')
-                self.modeldict["model"]["aiming"]["x"] = format(data[model.index("Aiming_X1")],'d') + " : " + format(data[model.index("Aiming_X2")],'d')
-                self.modeldict["model"]["aiming"]["y"] = format(data[model.index("Aiming_Y1")],'d') + " : " + format(data[model.index("Aiming_Y2")],'d')
-                
-                self.modeldict["model"]["sidestep"]["drift_offset"] = data[model.index("Sidestep")] if self.modeldict["model"]["sidestep"]["drift_offset"] == -1  else self.modeldict["model"]["sidestep"]["drift_offset"]
-                self.modeldict["model"]["sidestep"]["value"] = format(data[model.index("S_Bias")],'d') + " : " + format((lambda x, y: x - self.modeldict["model"]["sidestep"]["drift_offset"] if x + (-1 * self.modeldict["model"]["sidestep"]["drift_offset"]) > -1 and (y == 64 or y ==128 or y == 0 and y == 192) else x)(data[model.index("Sidestep")], data[model.index("S_Bias")]),'d')
-#                self.modeldict["model"]["sidestep"]["value"] = format(data[model.index("S_Bias")],'d') + " : " + format(data[model.index("Sidestep")],'d')
-                
-                self.modeldict["model"]["brake"]["drift_offset"] = data[model.index("Brake")] if self.modeldict["model"]["brake"]["drift_offset"] == -1 else self.modeldict["model"]["brake"]["drift_offset"]
-                self.modeldict["model"]["brake"]["value"] = format(data[model.index("B_Bias")],'d') + " : " + format((lambda x, y: x - self.modeldict["model"]["brake"]["drift_offset"] if x + (-1 * self.modeldict["model"]["brake"]["drift_offset"]) > -1 and (y == 64 or y ==128 or y == 0 and y != 192) else x)(data[model.index("Brake")], data[model.index("B_Bias")]),'d')
-                
-                self.modeldict["model"]["throttle"]["drift_offset"] = data[model.index("Throttle")] if self.modeldict["model"]["throttle"]["drift_offset"] == -1 else self.modeldict["model"]["throttle"]["drift_offset"]
-                self.modeldict["model"]["throttle"]["value"] = format(data[model.index("T_Bias")],'d') + " : " + format((lambda x, y: x - self.modeldict["model"]["throttle"]["drift_offset"] if x + (-1 * self.modeldict["model"]["throttle"]["drift_offset"]) > -1 and (y == 64 or y ==128 or y == 0 and y != 192) else x)(data[model.index("Throttle")], data[model.index("T_Bias")]),'d')
+                self.modeldict["model"]["sight"]["x"] = format(data[model.index("Sight_X1")]+data[model.index("Sight_X2")],'d')
+                self.modeldict["model"]["sight"]["y"] = format(data[model.index("Sight_Y1")]+data[model.index("Sight_Y2")],'d')
+                self.modeldict["model"]["rotation"] = format(data[model.index("Rotation1")]+data[model.index("Rotation2")],'d')
+                self.modeldict["model"]["aiming"]["x"] = format(data[model.index("Aiming_X1")]+data[model.index("Aiming_X2")],'d')
+                self.modeldict["model"]["aiming"]["y"] = format(data[model.index("Aiming_Y1")]+data[model.index("Aiming_Y2")],'d')
+                self.modeldict["model"]["sidestep"]["value"] = format(data[model.index("Sidestep")]+data[model.index("S_Bias")],'d')
+                self.modeldict["model"]["brake"]["value"] = format(data[model.index("Brake")]+data[model.index("B_Bias")],'d')
+                self.modeldict["model"]["throttle"]["value"] = format(data[model.index("Throttle")]+data[model.index("T_Bias")],'d')
                 #
 #                for val in active_model:
 #                    index = model.index(val)
