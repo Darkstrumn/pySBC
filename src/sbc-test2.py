@@ -14,9 +14,9 @@ class Steel_Battalions_Controller:
         self.pid = 0xd000
         self.dev = usb.core.find(idVendor=self.vid, idProduct=self.pid)
         self.modeldict = {
-#                "index" : 0
-#                ,"rates" : [1,1,1,1,1,1,1,1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
-#                ,"buffers" : [0,0,0,0,0,0,0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                #"index" : 0
+                #,"rates" : [1,1,1,1,1,1,1,1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+                #,"buffers" : [0,0,0,0,0,0,0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 "model" : {
                     "header" : None
                     ,"buttons" : {
