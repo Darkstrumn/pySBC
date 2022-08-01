@@ -13,7 +13,7 @@ Ultimate intended goal is to make the SBC a PC controller vi
 Rpi being the heart of the controller. This is the pilot project
 for this technique in controller interfece design I've done.
 
-If the timing needs tobe more hi-rez, I may need to use something
+If the timing needs to be more hi-rez, I may need to use something
 other than Python, but presently it seems to be working! ^_^
 
 End of line.
