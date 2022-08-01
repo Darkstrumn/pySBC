@@ -14,9 +14,9 @@ class Steel_Battalions_Controller:
         self.pid = 0xd000
         self.dev = usb.core.find(idVendor=self.vid, idProduct=self.pid)
         self.modeldict = {
-                #"index" : 0
-                #,"rates" : [1,1,1,1,1,1,1,1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
-                #,"buffers" : [0,0,0,0,0,0,0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+#                "index" : 0
+#                ,"rates" : [1,1,1,1,1,1,1,1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+#                ,"buffers" : [0,0,0,0,0,0,0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 "model" : {
                     "header" : None
                     ,"buttons" : {
@@ -72,51 +72,51 @@ class Steel_Battalions_Controller:
                     ,"aiming" : {}
                     ,"tuner_dial" : None
                     ,"gear" : None
-                    ,"sidestep" : {"drift_offset" : -1}
-                    ,"brake" : {"drift_offset" : -1}
-                    ,"throttle" : {"drift_offset" : -1}
+                    ,"sidestep" : {}
+                    ,"brake" : {}
+                    ,"throttle" : {}
                     }#/model
                 ,"leds" : {
-                        "EmergencyEject" : {"id" : 4, "intensity" : 15},
+                        "EmergencyEject" : {"id" : 4, "intensity" : 0},
                         "CockpitHatch" : {"id" : 5, "intensity" : 15},
                         "Ignition" : {"id" : 6, "intensity" : 15},
                         "Start" : {"id" : 7, "intensity" : 15},
-                        "OpenClose" : {"id" : 8, "intensity" : 15},
-                        "MapZoomInOut" : {"id" : 9, "intensity" : 15},
-                        "ModeSelect" : {"id" : 10, "intensity" : 15},
-                        "SubMonitorModeSelect" : {"id" : 11, "intensity" : 15},
-                        "MainMonitorZoomIn" : {"id" : 12, "intensity" : 15},
-                        "MainMonitorZoomOut" : {"id" : 13, "intensity" : 15},
+                        "OpenClose" : {"id" : 8, "intensity" : 1},
+                        "MapZoomInOut" : {"id" : 9, "intensity" : 1},
+                        "ModeSelect" : {"id" : 10, "intensity" : 1},
+                        "SubMonitorModeSelect" : {"id" : 11, "intensity" : 1},
+                        "MainMonitorZoomIn" : {"id" : 12, "intensity" : 1},
+                        "MainMonitorZoomOut" : {"id" : 13, "intensity" : 1},
 	
-                        "Gear5" : {"id" : 41, "intensity" : 15},
-                        "Gear4" : {"id" : 40, "intensity" : 15},
-                        "Gear3" : {"id" : 39, "intensity" : 15},
-                        "Gear2" : {"id" : 38, "intensity" : 15},
-                        "Gear1" : {"id" : 37, "intensity" : 15},
-                        "GearN" : {"id" : 36, "intensity" : 15},
-                        "GearR" : {"id" : 35, "intensity" : 15},
+                        "Gear5" : {"id" : 41, "intensity" : 1},
+                        "Gear4" : {"id" : 40, "intensity" : 1},
+                        "Gear3" : {"id" : 39, "intensity" : 1},
+                        "Gear2" : {"id" : 38, "intensity" : 1},
+                        "Gear1" : {"id" : 37, "intensity" : 1},
+                        "GearN" : {"id" : 36, "intensity" : 1},
+                        "GearR" : {"id" : 35, "intensity" : 1},
 		
-                        "Comm5" : {"id" : 33, "intensity" : 15},
-                        "Comm4" : {"id" : 32, "intensity" : 15},
-                        "Comm3" : {"id" : 31, "intensity" : 15},
-                        "Comm2" : {"id" : 30, "intensity" : 15},
-                        "Comm1" : {"id" : 29, "intensity" : 15},
-                        "MagazineChange" : {"id" : 28, "intensity" : 15},
+                        "Comm5" : {"id" : 33, "intensity" : 1},
+                        "Comm4" : {"id" : 32, "intensity" : 1},
+                        "Comm3" : {"id" : 31, "intensity" : 1},
+                        "Comm2" : {"id" : 30, "intensity" : 1},
+                        "Comm1" : {"id" : 29, "intensity" : 1},
+                        "MagazineChange" : {"id" : 28, "intensity" : 1},
 
-                        "SubWeaponControl" : {"id" : 27, "intensity" : 15},
-                        "MainWeaponControl" : {"id" : 26, "intensity" : 15},
-                        "F3" : {"id" : 25, "intensity" : 15},
-                        "F2" : {"id" : 24, "intensity" : 15},
-                        "F1" : {"id" : 23, "intensity" : 15},
-                        "NightScope" : {"id" : 22, "intensity" : 15},
-                        "Override" : {"id" : 21, "intensity" : 15},
-                        "TankDetach" : {"id" : 20, "intensity" : 15},
-                        "Chaff" : {"id" : 19, "intensity" : 15},
-                        "Extinguisher" : {"id" : 18, "intensity" : 15},
-                        "Washing" : {"id" : 17, "intensity" : 15},
-                        "LineColorChange" : {"id" : 16, "intensity" : 15},
-                        "Manipulator" : {"id" : 15, "intensity" : 15},
-                        "ForecastShootingSystem" : {"id" : 14, "intensity" : 15}
+                        "SubWeaponControl" : {"id" : 27, "intensity" : 1},
+                        "MainWeaponControl" : {"id" : 26, "intensity" : 1},
+                        "F3" : {"id" : 25, "intensity" : 1},
+                        "F2" : {"id" : 24, "intensity" : 1},
+                        "F1" : {"id" : 23, "intensity" : 1},
+                        "NightScope" : {"id" : 22, "intensity" : 1},
+                        "Override" : {"id" : 21, "intensity" : 1},
+                        "TankDetach" : {"id" : 20, "intensity" : 1},
+                        "Chaff" : {"id" : 19, "intensity" : 1},
+                        "Extinguisher" : {"id" : 18, "intensity" : 1},
+                        "Washing" : {"id" : 17, "intensity" : 1},
+                        "LineColorChange" : {"id" : 16, "intensity" : 1},
+                        "Manipulator" : {"id" : 15, "intensity" : 1},
+                        "ForecastShootingSystem" : {"id" : 14, "intensity" : 1}
                     }#/led
                 }#/modeldict
 
@@ -251,21 +251,14 @@ class Steel_Battalions_Controller:
                 self.modeldict["model"]["separator"] = format(data[model.index("Const_01")],'08b')
                 self.modeldict["model"]["tuner_dial"] = format(data[model.index("Tuner_Dial")],'d')
                 self.modeldict["model"]["gear"] = re.sub("255","N", re.sub("254","R", format(data[model.index("Gear")],'d')))
-                self.modeldict["model"]["sight"]["x"] = format(data[model.index("Sight_X1")],'d') + " : " + format(data[model.index("Sight_X2")],'d')
-                self.modeldict["model"]["sight"]["y"] = format(data[model.index("Sight_Y1")],'d') + " : " + format(data[model.index("Sight_Y2")],'d')
-                self.modeldict["model"]["rotation"] = format(data[model.index("Rotation1")],'d') + " : " + format(data[model.index("Rotation2")],'d')
-                self.modeldict["model"]["aiming"]["x"] = format(data[model.index("Aiming_X1")],'d') + " : " + format(data[model.index("Aiming_X2")],'d')
-                self.modeldict["model"]["aiming"]["y"] = format(data[model.index("Aiming_Y1")],'d') + " : " + format(data[model.index("Aiming_Y2")],'d')
-                
-                self.modeldict["model"]["sidestep"]["drift_offset"] = data[model.index("Sidestep")] if self.modeldict["model"]["sidestep"]["drift_offset"] == -1  else self.modeldict["model"]["sidestep"]["drift_offset"]
-                self.modeldict["model"]["sidestep"]["value"] = format(data[model.index("S_Bias")],'d') + " : " + format((lambda x, y: x - self.modeldict["model"]["sidestep"]["drift_offset"] if x + (-1 * self.modeldict["model"]["sidestep"]["drift_offset"]) > -1 and (y == 64 or y ==128 or y == 0 and y == 192) else x)(data[model.index("Sidestep")], data[model.index("S_Bias")]),'d')
-#                self.modeldict["model"]["sidestep"]["value"] = format(data[model.index("S_Bias")],'d') + " : " + format(data[model.index("Sidestep")],'d')
-                
-                self.modeldict["model"]["brake"]["drift_offset"] = data[model.index("Brake")] if self.modeldict["model"]["brake"]["drift_offset"] == -1 else self.modeldict["model"]["brake"]["drift_offset"]
-                self.modeldict["model"]["brake"]["value"] = format(data[model.index("B_Bias")],'d') + " : " + format((lambda x, y: x - self.modeldict["model"]["brake"]["drift_offset"] if x + (-1 * self.modeldict["model"]["brake"]["drift_offset"]) > -1 and (y == 64 or y ==128 or y == 0 and y != 192) else x)(data[model.index("Brake")], data[model.index("B_Bias")]),'d')
-                
-                self.modeldict["model"]["throttle"]["drift_offset"] = data[model.index("Throttle")] if self.modeldict["model"]["throttle"]["drift_offset"] == -1 else self.modeldict["model"]["throttle"]["drift_offset"]
-                self.modeldict["model"]["throttle"]["value"] = format(data[model.index("T_Bias")],'d') + " : " + format((lambda x, y: x - self.modeldict["model"]["throttle"]["drift_offset"] if x + (-1 * self.modeldict["model"]["throttle"]["drift_offset"]) > -1 and (y == 64 or y ==128 or y == 0 and y != 192) else x)(data[model.index("Throttle")], data[model.index("T_Bias")]),'d')
+                self.modeldict["model"]["sight"]["x"] = format(data[model.index("Sight_X1")]+data[model.index("Sight_X2")],'d')
+                self.modeldict["model"]["sight"]["y"] = format(data[model.index("Sight_Y1")]+data[model.index("Sight_Y2")],'d')
+                self.modeldict["model"]["rotation"] = format(data[model.index("Rotation1")]+data[model.index("Rotation2")],'d')
+                self.modeldict["model"]["aiming"]["x"] = format(data[model.index("Aiming_X1")]+data[model.index("Aiming_X2")],'d')
+                self.modeldict["model"]["aiming"]["y"] = format(data[model.index("Aiming_Y1")]+data[model.index("Aiming_Y2")],'d')
+                self.modeldict["model"]["sidestep"]["value"] = format(data[model.index("Sidestep")]+data[model.index("S_Bias")],'d')
+                self.modeldict["model"]["brake"]["value"] = format(data[model.index("Brake")]+data[model.index("B_Bias")],'d')
+                self.modeldict["model"]["throttle"]["value"] = format(data[model.index("Throttle")]+data[model.index("T_Bias")],'d')
                 #
 #                for val in active_model:
 #                    index = model.index(val)
