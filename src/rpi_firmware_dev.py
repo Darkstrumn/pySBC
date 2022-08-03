@@ -17,52 +17,49 @@ class Steel_Battalions_Controller:
                 "model" : {
                     "header" : None
                     ,"buttons" : {
-                        # cmd column
-                        "Eject" : None
-                        ,"Hatch" : None
-                        ,"Ignition" : None
-                        ,"Start" : None
-                        # toggles switches
-                        ,"Oxygen" : None
-                        ,"Filt" : None
-                        ,"Fuel" : None
-                        ,"Buffer" : None
-                        ,"Location" : None
-                        # 1x5  buttons - communications (red)
-                        ,"Ch1x1" : None
-                        ,"Ch1x2" : None
-                        ,"Ch1x3" : None
-                        ,"Ch1x4" : None
-                        ,"Ch1x5" : None
-                        # 3x3 Buttons - functions (green 3x3)
-                        ,"Fx1x1" : None
-                        ,"Fx1x2" : None
-                        ,"Fx1x3" : None
-                        ,"Fx2x1" : None
-                        ,"Fx2x2" : None
-                        ,"Fx2x3" : None
-                        ,"Fx3x1" : None
-                        ,"Fx3x2" : None
-                        ,"Fx3x3" : None
-                        # 2x3 - Weapon Controls (green 2x3)
-                        ,"Wc1x1" : None
-                        ,"Wc1x2" : None
-                        ,"Wc1x3" : None
-                        ,"Wc2x1" : None
-                        ,"Wc2x2" : None
-                        ,"Wc2x3" : None
-                        # 3x2 - Monitor Controls (green 3x2)
-                        ,"Mc1x1" : None
-                        ,"Mc1x2" : None
-                        ,"Mc2x1" : None
-                        ,"Mc2x2" : None
-                        ,"Mc3x1" : None
-                        ,"Mc3x2" : None
-                        ,"finger_trigger" : None
-                        ,"thumb_trigger" : None
-                        ,"lock_on" : None
+                        "RightJoyMainWeapon": None
+                        ,"RightJoyFire": None
+                        ,"RightJoyLockOn": None
+                        ,"Eject": None
+                        ,"CockpitHatch": None
+                        ,"Ignition": None
+                        ,"Start": None
+                        ,"MultiMonOpenClose": None
+                        ,"MultiMonMapZoomInOut": None
+                        ,"MultiMonModeSelect": None
+                        ,"MultiMonSubMonitor": None
+                        ,"MainMonZoomIn": None
+                        ,"MainMonZoomOut": None
+                        ,"FunctionFSS": None
+                        ,"FunctionManipulator": None
+                        ,"FunctionLineColorChange": None
+                        ,"Washing": None
+                        ,"Extinguisher": None
+                        ,"Chaff": None
+                        ,"FunctionTankDetach": None
+                        ,"FunctionOverride": None
+                        ,"FunctionNightScope": None
+                        ,"FunctionF1": None
+                        ,"FunctionF2": None
+                        ,"FunctionF3": None
+                        ,"WeaponConMain": None
+                        ,"WeaponConSub": None
+                        ,"WeaponConMagazine": None
+                        ,"Comm1": None
+                        ,"Comm2": None
+                        ,"Comm3": None
+                        ,"Comm4": None
+                        ,"Comm5": None
+                        ,"LeftJoySightChange": None
+                        ,"ToggleFilterControl": None
+                        ,"ToggleOxygenSupply": None
+                        ,"ToggleFuelFlowRate": None
+                        ,"ToggleBufferMaterial": None
+                        ,"ToggleVTLocation": None
+                        ,"TunerDialStateChange": None
+                        ,"GearLeverStateChange": None
                         ,"SBC_Active" : 1
-                        }#/buttons
+                        } #/buttons
                     ,"separator" : None
                     ,"sight" :  {}
                     ,"rotation" : None
@@ -72,47 +69,54 @@ class Steel_Battalions_Controller:
                     ,"sidestep" : {"drift_offset" : -1}
                     ,"brake" : {"drift_offset" : -1}
                     ,"throttle" : {"drift_offset" : -1}
-                    }#/model
+                    } #/model
                 ,"leds" : {
-                        4 : { "name" : "EmergencyEject", "id" : 4, "intensity" : 0, "byte_pos" : (round(int(4 - (4 % 2)) / 2))},
-                        5 : { "name" : "CockpitHatch", "id" : 5, "intensity" : 0, "byte_pos" : (round(int(5 - (5 % 2)) / 2))},
-                        6 : { "name" : "Ignition", "id" : 6, "intensity" : 0, "byte_pos" : (round(int(6 - (6 % 2)) / 2))},
-                        7 : { "name" : "Start", "id" : 7, "intensity" : 0, "byte_pos" : (round(int(7 - (7 % 2)) / 2))},
-                        8 : { "name" : "OpenClose", "id" : 8, "intensity" : 0, "byte_pos" : (round(int(8 - (8 % 2)) / 2))},
-                        9 : { "name" : "MapZoomInOut", "id" : 9, "intensity" : 0, "byte_pos" : (round(int(9 - (9 % 2)) / 2))},
-                        10 : { "name" : "ModeSelect", "id" : 10, "intensity" : 0, "byte_pos" : (round(int(10 - (10 % 2)) / 2))},
-                        11 : { "name" : "SubMonitorModeSelect", "id" : 11, "intensity" : 0, "byte_pos" : (round(int(11 - (11 % 2)) / 2))},
-                        12 : { "name" : "MainMonitorZoomIn", "id" : 12, "intensity" : 0, "byte_pos" : (round(int(12 - (12 % 2)) / 2))},
-                        13 : { "name" : "MainMonitorZoomOut", "id" : 13, "intensity" : 0, "byte_pos" : (round(int(13 - (13 % 2)) / 2))},
-                        41 : { "name" : "Gear5", "id" : 41, "intensity" : 0, "byte_pos" : (round(int(41 - (41 % 2)) / 2))},
-                        40 : { "name" : "Gear4", "id" : 40, "intensity" : 0, "byte_pos" : (round(int(40 - (40 % 2)) / 2))},
-                        39 : { "name" : "Gear3", "id" : 39, "intensity" : 0, "byte_pos" : (round(int(39 - (39 % 2)) / 2))},
-                        38 : { "name" : "Gear2", "id" : 38, "intensity" : 0, "byte_pos" : (round(int(38 - (38 % 2)) / 2))},
-                        37 : { "name" : "Gear1", "id" : 37, "intensity" : 0, "byte_pos" : (round(int(37 - (37 % 2)) / 2))},
-                        36 : { "name" : "GearN", "id" : 36, "intensity" : 0, "byte_pos" : (round(int(36 - (36 % 2)) / 2))},
-                        35 : { "name" : "GearR", "id" : 35, "intensity" : 0, "byte_pos" : (round(int(35 - (35 % 2)) / 2))},
-                        33 : { "name" : "Comm5", "id" : 33, "intensity" : 0, "byte_pos" : (round(int(33 - (33 % 2)) / 2))},
-                        32 : { "name" : "Comm4", "id" : 32, "intensity" : 0, "byte_pos" : (round(int(32 - (32 % 2)) / 2))},
-                        31 : { "name" : "Comm3", "id" : 31, "intensity" : 0, "byte_pos" : (round(int(31 - (31 % 2)) / 2))},
-                        30 : { "name" : "Comm2", "id" : 30, "intensity" : 0, "byte_pos" : (round(int(30 - (30 % 2)) / 2))},
-                        29 : { "name" : "Comm1", "id" : 29, "intensity" : 0, "byte_pos" : (round(int(29 - (29 % 2)) / 2))},
-                        28 : { "name" : "MagazineChange", "id" : 28, "intensity" : 0, "byte_pos" : (round(int(28 - (28 % 2)) / 2))},
-                        27 : { "name" : "SubWeaponControl", "id" : 27, "intensity" : 0, "byte_pos" : (round(int(27 - (27 % 2)) / 2))},
-                        26 : { "name" : "MainWeaponControl", "id" : 26, "intensity" : 0, "byte_pos" : (round(int(26 - (26 % 2)) / 2))},
-                        25 : { "name" : "F3", "id" : 25, "intensity" : 0, "byte_pos" : (round(int(25 - (25 % 2)) / 2))},
-                        24 : { "name" : "F2", "id" : 24, "intensity" : 0, "byte_pos" : (round(int(24 - (24 % 2)) / 2))},
-                        23 : { "name" : "F1", "id" : 23, "intensity" : 0, "byte_pos" : (round(int(23 - (23 % 2)) / 2))},
-                        22 : { "name" : "NightScope", "id" : 22, "intensity" : 0, "byte_pos" : (round(int(22 - (22 % 2)) / 2))},
-                        21 : { "name" : "Override", "id" : 21, "intensity" : 0, "byte_pos" : (round(int(21 - (21 % 2)) / 2))},
-                        20 : { "name" : "TankDetach", "id" : 20, "intensity" : 0, "byte_pos" : (round(int(20 - (20 % 2)) / 2))},
-                        19 : { "name" : "Chaff", "id" : 19, "intensity" : 0, "byte_pos" : (round(int(19 - (19 % 2)) / 2))},
-                        18 : { "name" : "Extinguisher", "id" : 18, "intensity" : 0, "byte_pos" : (round(int(18 - (18 % 2)) / 2))},
-                        17 : { "name" : "Washing", "id" : 17, "intensity" : 0, "byte_pos" : (round(int(17 - (17 % 2)) / 2))},
-                        16 : { "name" : "LineColorChange", "id" : 16, "intensity" : 0, "byte_pos" : (round(int(16 - (16 % 2)) / 2))},
-                        15 : { "name" : "Manipulator", "id" : 15, "intensity" : 0, "byte_pos" : (round(int(15 - (15 % 2)) / 2))},
-                        14 : { "name" : "ForecastShootingSystem", "id" : 14, "intensity" : 0, "byte_pos" : (round(int(14 - (14 % 2)) / 2))}
-                    }#/led
-                }#/modeldict
+                        4 : { "name" : "EmergencyEject", "id" : 4, "intensity" : 0, "hex_pos" : int(4 % 2), "byte_pos" : (round(int(4 - (4 % 2)) / 2))},
+                        5 : { "name" : "CockpitHatch", "id" : 5, "intensity" : 0, "hex_pos" : int(5 % 2), "byte_pos" : (round(int(5 - (5 % 2)) / 2))},
+                        6 : { "name" : "Ignition", "id" : 6, "intensity" : 0, "hex_pos" : int(7 % 2), "byte_pos" : (round(int(6 - (6 % 2)) / 2))},
+                        7 : { "name" : "Start", "id" : 7, "intensity" : 0, "hex_pos" : int(4 % 2), "byte_pos" : (round(int(7 - (7 % 2)) / 2))},
+                        8 : { "name" : "OpenClose", "id" : 8, "intensity" : 0, "hex_pos" : int(8 % 2), "byte_pos" : (round(int(8 - (8 % 2)) / 2))},
+                        9 : { "name" : "MapZoomInOut", "id" : 9, "intensity" : 0, "hex_pos" : int(9 % 2), "byte_pos" : (round(int(9 - (9 % 2)) / 2))},
+                        10 : { "name" : "ModeSelect", "id" : 10, "intensity" : 0, "hex_pos" : int(10 % 2), "byte_pos" : (round(int(10 - (10 % 2)) / 2))},
+                        11 : { "name" : "SubMonitorModeSelect", "id" : 11, "intensity" : 0, "hex_pos" : int(11 % 2), "byte_pos" : (round(int(11 - (11 % 2)) / 2))},
+                        12 : { "name" : "MainMonitorZoomIn", "id" : 12, "intensity" : 0, "hex_pos" : int(12 % 2), "byte_pos" : (round(int(12 - (12 % 2)) / 2))},
+                        13 : { "name" : "MainMonitorZoomOut", "id" : 13, "intensity" : 0, "hex_pos" : int(13 % 2), "byte_pos" : (round(int(13 - (13 % 2)) / 2))},
+                        14 : { "name" : "ForecastShootingSystem", "id" : 14, "intensity" : 0, "hex_pos" : int(14 % 2), "byte_pos" : (round(int(14 - (14 % 2)) / 2))},
+                        15 : { "name" : "Manipulator", "id" : 15, "intensity" : 0, "hex_pos" : int(15 % 2), "byte_pos" : (round(int(15 - (15 % 2)) / 2))},
+                        16 : { "name" : "LineColorChange", "id" : 16, "intensity" : 0, "hex_pos" : int(16 % 2), "byte_pos" : (round(int(16 - (16 % 2)) / 2))},
+                        17 : { "name" : "Washing", "id" : 17, "intensity" : 0, "hex_pos" : int(17 % 2), "byte_pos" : (round(int(17 - (17 % 2)) / 2))},
+                        18 : { "name" : "Extinguisher", "id" : 18, "intensity" : 0, "hex_pos" : int(18 % 2), "byte_pos" : (round(int(18 - (18 % 2)) / 2))},
+                        19 : { "name" : "Chaff", "id" : 19, "intensity" : 0, "hex_pos" : int(19 % 2), "byte_pos" : (round(int(19 - (19 % 2)) / 2))},
+                        20 : { "name" : "TankDetach", "id" : 20, "intensity" : 0, "hex_pos" : int(20 % 2), "byte_pos" : (round(int(20 - (20 % 2)) / 2))},
+                        21 : { "name" : "Override", "id" : 21, "intensity" : 0, "hex_pos" : int(21 % 2), "byte_pos" : (round(int(21 - (21 % 2)) / 2))},
+                        22 : { "name" : "NightScope", "id" : 22, "intensity" : 0, "hex_pos" : int(22 % 2), "byte_pos" : (round(int(22 - (22 % 2)) / 2))},
+                        23 : { "name" : "F1", "id" : 23, "intensity" : 0, "hex_pos" : int(23 % 2), "byte_pos" : (round(int(23 - (23 % 2)) / 2))},
+                        24 : { "name" : "F2", "id" : 24, "intensity" : 0, "hex_pos" : int(24 % 2), "byte_pos" : (round(int(24 - (24 % 2)) / 2))},
+                        25 : { "name" : "F3", "id" : 25, "intensity" : 0, "hex_pos" : int(25 % 2), "byte_pos" : (round(int(25 - (25 % 2)) / 2))},
+                        26 : { "name" : "MainWeaponControl", "id" : 26, "intensity" : 0, "hex_pos" : int(26 % 2), "byte_pos" : (round(int(26 - (26 % 2)) / 2))},
+                        27 : { "name" : "SubWeaponControl", "id" : 27, "intensity" : 0, "hex_pos" : int(27 % 2), "byte_pos" : (round(int(27 - (27 % 2)) / 2))},
+                        28 : { "name" : "MagazineChange", "id" : 28, "intensity" : 0, "hex_pos" : int(28 % 2), "byte_pos" : (round(int(28 - (28 % 2)) / 2))},
+                        29 : { "name" : "Comm1", "id" : 29, "intensity" : 0, "hex_pos" : int(29 % 2), "byte_pos" : (round(int(29 - (29 % 2)) / 2))},
+                        30 : { "name" : "Comm2", "id" : 30, "intensity" : 0, "hex_pos" : int(30 % 2), "byte_pos" : (round(int(30 - (30 % 2)) / 2))},
+                        31 : { "name" : "Comm3", "id" : 31, "intensity" : 0, "hex_pos" : int(31 % 2), "byte_pos" : (round(int(31 - (31 % 2)) / 2))},
+                        32 : { "name" : "Comm4", "id" : 32, "intensity" : 0, "hex_pos" : int(32 % 2), "byte_pos" : (round(int(32 - (32 % 2)) / 2))},
+                        33 : { "name" : "Comm5", "id" : 33, "intensity" : 0, "hex_pos" : int(33 % 2), "byte_pos" : (round(int(33 - (33 % 2)) / 2))},
+			# Note: no element 34 think it's the always on comm-dial red dot
+                        34 : { "name" : "CommDial", "id" : 33, "intensity" : 0, "hex_pos" : int(34 % 2), "byte_pos" : (round(int(34 - (34 % 2)) / 2))},
+			# Note: no element 34 think it's the always on comm-dial red dot
+                        35 : { "name" : "GearR", "id" : 35, "intensity" : 0, "hex_pos" : int(35 % 2), "byte_pos" : (round(int(35 - (35 % 2)) / 2))},
+                        36 : { "name" : "GearN", "id" : 36, "intensity" : 0, "hex_pos" : int(36 % 2), "byte_pos" : (round(int(36 - (36 % 2)) / 2))},
+                        37 : { "name" : "Gear1", "id" : 37, "intensity" : 0, "hex_pos" : int(37 % 2), "byte_pos" : (round(int(37 - (37 % 2)) / 2))},
+                        38 : { "name" : "Gear2", "id" : 38, "intensity" : 0, "hex_pos" : int(38 % 2), "byte_pos" : (round(int(38 - (38 % 2)) / 2))},
+                        39 : { "name" : "Gear3", "id" : 39, "intensity" : 0, "hex_pos" : int(39 % 2), "byte_pos" : (round(int(39 - (39 % 2)) / 2))},
+                        40 : { "name" : "Gear4", "id" : 40, "intensity" : 0, "hex_pos" : int(40 % 2), "byte_pos" : (round(int(40 - (40 % 2)) / 2))},
+                        41 : { "name" : "Gear5", "id" : 41, "intensity" : 0, "hex_pos" : int(41 % 2), "byte_pos" : (round(int(41 - (41 % 2)) / 2))}
+                    } #/leds
+		,"gearSettings" : {
+			"intensity" : 0x0f,
+			"immediateSend" : False
+		    } #/gearSettings
+                } #/modeldict
 
         self.vid = 0x0a7b
         self.pid = 0xd000
@@ -146,21 +150,18 @@ class Steel_Battalions_Controller:
             usb.util.claim_interface(self.dev, self.interface)
 
         print("Leds::", self.modeldict["leds"])
-#        return False
 
-        self.led_test()
-        
 
     def program(self):
         print("* Program called.")
-        self.release_sbc()
-        exit(0)
-
         self.clear()
         if not self.dev:
             print("Could not find SBC :(")
             exit(1)
         print("SBC - Detected!")
+        self.led_rezzup_sequence()
+        while True:
+     	    self.gear_shifter_handler()
         self.parse_loop()
         self.release_sbc()
         exit(0)
@@ -178,7 +179,7 @@ class Steel_Battalions_Controller:
         active_model = ["Aiming_X1", "Aiming_X2", "Aiming_Y1", "Aiming_Y2", "Rotation1", "Rotation2", "Sight_X1", "Sight_X2", "Sight_Y1", "Sight_Y2", "S_Bias", "Sidestep", "B_Bias", "Brake", "T_Bias", "Throttle","Const_00", "SBC_Id","Const_01"]
 
 
-        while collected < attempts :
+        while collected < attempts:
             try:
                 prev_data = self.read_sbc(model,active_model,collected,attempts,prev_data)
                 self.clear()
@@ -203,80 +204,109 @@ class Steel_Battalions_Controller:
     def cmd_sbc(self, cmd):
         print("* cmd_sbc called.")
         self.endpoint_writer(cmd)
+
+    def gear_shifter_handler(self, gear):
+        print("* gear_shifter_handler called.")
+        for index in range(35, 41,1):
+            set_led_state(index, 0x00, false)
+        gear_offset = 0
+
+        if gear < 0:
+            gear_offset = self.get_gear("Gear1", self.modeldict["leds"])["id"]
+        else:
+            gear_offset = self.get_gear("GearN", self.modeldict["leds"])["id"]
+
+        true_gear = gear_offset + gear
+        config_intensity = self.modeldict["gearSettings"]["intensity"]
+        config_immediate_send = self.modeldict["gearSettings"]["immediateSend"]
+        self.set_led_state(gear_offset + true_gear, config_intensity, config_immediate_send)	
+
+    def get_gear(self, val, in_dict):
+    	for key, value in in_dict.items():
+        	if val == value["name"]:
+        		return value         
         
-    def refresh_led_state(self):
+    def send_led_state(self):
         raw_led_data = arr.array("B",[])
-#        for i in range(34):
-#            raw_led_data.append(0x00)
 
         for led_index in self.modeldict["leds"]:
-            #print("led_index", led_index)
-            print("refresh_led_state ", led_index,", ", self.modeldict["leds"][led_index])
-            #raw_led_data[self.modeldict["leds"][led_index]["byte_pos"]] = self.modeldict["leds"][led_index]["intensity"]
-            
-            #byte_pos = int(self.modeldict["leds"][led_index]["byte_pos"])
-            #print("***byte_pos:: ", byte_pos)
-            #raw_led_data[byte_pos] = self.modeldict["leds"][led_index]["intensity"]
             raw_led_data.append(self.modeldict["leds"][led_index]["intensity"])
-            #print("rld: ", raw_led_data)
+#            print("send_led_state ", led_index,", ", self.modeldict["leds"][led_index])
+            
         self.endpoint_writer.write(raw_led_data)
+        print("rld: ", raw_led_data)
         
-    def set_led_state(self, led_id, intensity, refresh_state):
+    def set_led_state(self, led_id, intensity, send_state = True):
         print("* set_led_state called.")
         led = self.modeldict["leds"][led_id]
+        led_index = list(self.modeldict["leds"].keys()).index(led_id)
         
-        if led == None: return
+        if not led_index: return
         
-        hex_pos = int(led_id % 2)
-        byte_pos = self.modeldict["leds"][led_id]["byte_pos" ]
+        print(led, " == ", led_index, "?")
 
-        print("set_led_state:___hex_pos: ", hex_pos," ___byte_pos: ",byte_pos, " intensity: ", intensity)
+        hex_pos = self.modeldict["leds"][led_id]["hex_pos"]
+        byte_pos = self.modeldict["leds"][led_id]["byte_pos"]
+
+        #validating predefines
+        hex_pos1 = int(led_id) % 2
+        byte_pos1 = int(led_id) - hex_pos / 2
 
         intensity = 0x0f if intensity >= 0x0f else intensity
+
 #        self.modeldict["leds"][led_id]["byte_pos" ] = byte_pos
-        self.modeldict["leds"][led_id]["intensity"] &= (0x0F if hex_pos == 1 else 0xF0)
+        self.modeldict["leds"][led_id]["intensity"] &= (0x0f if hex_pos == 1 else 0xf0)
         self.modeldict["leds"][led_id]["intensity"] += (intensity * (0x10 if hex_pos == 1 else 0x01))
-        if refresh_state:
-            self.refresh_led_state()
+        print("set_led_state:hex_pos: ", hex_pos," hex_pos1: ",byte_pos1, " byte_pos: ",byte_pos," byte_pos1: ",byte_pos1,  " intensity: ", intensity)
+
+        if send_state:
+            self.send_led_state()
 
     def get_led_state(self, led_id):
         print("* get_led_state called.")
-        led_index = self.modeldict["leds"].find(led_id)
+        led_index = list(self.modeldict["leds"].keys()).index(led_id)
 
-        if led == None: return
+        if led_index is None: return -1
         
-        hex_pos = int(led_id % 2)
-        byte_pos = int(led_id - hex_pos) / 2
-        intensity = 0x0f if intensity > 0x0f else intensity
+        hex_pos = self.modeldict["leds"][led_index]["hex_pos" ]
+        byte_pos = self.modeldict["leds"][led_index]["byte_pos" ]
+        intensity = self.modeldict["leds"][led_index]["intensity" ]
+        
         print("** intensity: ",intensity)
-        return self.modeldict["leds"][led_index]["intensity"] & (0x0F if hex_pos == 1 else 0xF0) /  (0x01 if hex_pos == 1 else 0x10)
+        #return self.modeldict["leds"][led_index]["intensity"] & (0x0F if hex_pos == 1 else 0xF0) /  (0x01 if hex_pos == 1 else 0x10)
 
-    def led_test2(self, index):
-        print("* led_test2 called.")
+        return intensity
+
+    def led_pulser(self, index):
+        print("* led_pulser called.")
         led = self.modeldict["leds"].get(index)
         led_id = led["id"]
-        for intensity in range(0x0e):
-            self.clearConsole()
-            self.set_led_state(led_id, intensity, True)
-            sleep(0.5)
+        fade_delay = 0.7
+#        for intensity in range(0x0f):
+        self.set_led_state(led_id, 0x00, True)
+        #fade-in
+#        for intensity in range(0x0f):
+#            self.set_led_state(led_id, intensity, True)
+#            sleep(fade_delay)
+        # on
+        self.set_led_state(led_id, 0x0f, True)
+        sleep(fade_delay)
         led = self.modeldict["leds"].get(index)
         led_id = led["id"]
+
+        #fade-out
 #        for intensity in range(0x10, -1, -1):
 #            self.set_led_state(led_id, intensity, True)
-#            sleep(1)
+#            sleep(fade_delay)
+        # off
 #        self.set_led_state(led_id, 0x00, True)
 
-    def led_test(self):
-        print("* led_test called.")
-        self.refresh_led_state()
+    def led_rezzup_sequence(self):
+        print("* led_rezzup_sequence called.")
         for x in range(2):
             for index in self.modeldict["leds"]:
-                self.led_test2(index)
-        self.refresh_led_state()
-
-    def clearConsole(self):
-        command = 'clear'
-        system(command)
+                print("Pulsing ", self.modeldict["leds"][index]["name"])
+                self.led_pulser(index)
 
 
     def read_sbc(self, model, active_model, collected, attempts, prev_data):
@@ -381,7 +411,7 @@ class Steel_Battalions_Controller:
         return data
 
     def translate(self,value):
-        print("* translate called.")
+        #print("* translate called.")
         ret = re.sub("0", "-- ", value)
         ret = re.sub("1", "ON", ret)
         return ret
@@ -408,7 +438,7 @@ class Steel_Battalions_Controller:
         if name == 'nt': 
             _ = system('cls') 
   
-    # for ma    c and linux(here, os.name is 'posix') 
+    # for mac and linux(here, os.name is 'posix') 
         else: 
             _ = system('clear')
 
